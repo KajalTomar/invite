@@ -1,16 +1,13 @@
-/* Home.scss */
 .home {
   display: flex;
-  justify-content: center;  
-  align-items: flex-start;      
-  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  min-height: 100svh; /* fallback */
+  min-height: 100vh;  /* legacy fallback */
+  width: 100vw;
+  background: #fff;
   overflow: hidden;
-
-
-  min-height: 100dvh;  
-  min-height: 100svh;  
-  min-height: 100vh;  
-
   padding: env(safe-area-inset-top, 0)
            env(safe-area-inset-right, 0)
            env(safe-area-inset-bottom, 0)
@@ -19,19 +16,30 @@
 
 .home__image {
   display: block;
-
-  /* ✅ Fit the image in BOTH dimensions so it never overflows */
-  max-width: 100vw;
-  max-height: 100dvh;
-  max-height: 100svh;  /* fallback chain */
-  max-height: 100vh;
-
-  /* Preserve aspect ratio; no distortion */
+  margin-inline: auto;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  max-height: calc(100svh - 24px);
+  max-height: calc(100vh - 24px);
   width: auto;
   height: auto;
   object-fit: contain;
-
-  /* Keep drag/select disabled for a cleaner feel */
   -webkit-user-drag: none;
   user-select: none;
 }
+
+.AllCircles {
+  position: absolute;
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.circle,
+.hollow-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+.circle { background: #333; }
+.hollow-circle { border: 2px solid #333; background: transparent; }
